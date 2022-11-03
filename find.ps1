@@ -1,21 +1,19 @@
-Function Find-Employee {
-    param (
-        # Parameter accepts the employee id to be searched.
-        [Parameter(Mandatory)]
-        $EmployeeID
-    )
+param (
+    # Parameter accepts the employee id to be searched.
+    [Parameter(Mandatory)]
+    $EmployeeID
+)
 
-    # Import the contents of the employee.csv file and store it in the $employee_list variable.
-    $employee_list = Import-Csv .\students.csv
+# Import the contents of the employee.csv file and store it in the $employee_list variable.
+$employee_list = Import-Csv .\students.csv
 
-    # Loop through all the records in the CSV
-    foreach ($employee in $employee_list) {
+# Loop through all the records in the CSV
+foreach ($employee in $employee_list) {
 
-        # Check if the current record's employee ID is equal to the value of the EmployeeID parameter.
-        if ($employee.id -eq $EmployeeID) {
+    # Check if the current record's employee ID is equal to the value of the EmployeeID parameter.
+    if ($employee.id -eq $EmployeeID) {
 
-            # If the EmployeeID is found, display the record on the console.
-            Write-Host "$($_.first_name) $($_.last_name), whose Employee ID is $($_.id), was born on $($_.date_of_birth)."
-        }
+        # If the EmployeeID is found, display the record on the console.
+        Write-Host "$($employee.first_name) $($employee.last_name), whose Employee ID is $($employee.id), was born on $($employee.date_of_birth)."
     }
 }
